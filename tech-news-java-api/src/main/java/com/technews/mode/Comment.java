@@ -18,7 +18,7 @@ public class Comment {
     private Integer userId;
     private Integer postId;
 
-    public Comment(Integer id, String commentText, Integer userId, Integer postId) {
+    public Comment() {
         this.id = id;
         this.commentText = commentText;
         this.userId = userId;
