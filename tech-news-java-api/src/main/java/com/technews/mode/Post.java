@@ -18,7 +18,7 @@ public class Post implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer Id;
+    private Integer id;
 
     private String title;
 
@@ -45,8 +45,9 @@ public class Post implements Serializable {
     @OneToMany(mappedBy = "postId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Comment> comments;
 
-    public Post(Integer id, String title, String postUrl, String userName, int voteCount, Integer userId, Date postedAt, Date updatedAt, List<Comment> comments) {
-        Id = id;
+
+    public Post() {
+        this.id = id;
         this.title = title;
         this.postUrl = postUrl;
         this.userName = userName;
@@ -58,11 +59,11 @@ public class Post implements Serializable {
     }
 
     public Integer getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Integer id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getTitle() {
@@ -135,7 +136,7 @@ public class Post implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
         Post post = (Post) o;
         return voteCount == post.voteCount &&
-                Objects.equals(Id, post.Id) &&
+                Objects.equals(id, post.id) &&
                 Objects.equals(title, post.title) &&
                 Objects.equals(postUrl, post.postUrl) &&
                 Objects.equals(userName, post.userName) &&
@@ -148,7 +149,7 @@ public class Post implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(
-                Id,
+                id,
                 title,
                 postUrl,
                 userName,
@@ -162,7 +163,7 @@ public class Post implements Serializable {
     @Override
     public String toString() {
         return "Post{" +
-                "Id=" + Id +
+                "id=" + id +
                 ", title='" + title + '\'' +
                 ", postUrl='" + postUrl + '\'' +
                 ", userName='" + userName + '\'' +
